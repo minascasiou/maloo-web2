@@ -1,0 +1,58 @@
+﻿@page "/Maloo"
+@using System.Linq
+@using BlazorApp.Shared
+
+<h3>MainPage</h3>
+
+<button @onclick="OnCounterClicked">@counterText</button>
+
+<input @bind="sStandardMaterialLength" placeholder="Standard Material Length" />
+<input @bind="sOrderingLengths" placeholder="Ordering Lengths" />
+
+<p>@((MarkupString)outputText)</p>
+
+
+
+@code {
+    private int count = 0;
+    private int slotLength = 5400;
+    private List<int> rodLengths = new List<int> { 1, 2, 3 };
+    private string outputText = "";
+    private string counterText = "Click me";
+    private string? sStandardMaterialLength;
+    private string? sOrderingLengths;
+
+    private void OnCounterClicked()
+    {
+        count++;
+        counterText = count == 1 ? $"Clicked {count} time" : $"Clicked {count} times";
+
+        rodLengths = sOrderingLengths.Split(" ")
+                                     .Select(int.Parse)
+                                     .ToList();
+
+        CalculateAll(int.Parse(sStandardMaterialLength), rodLengths);
+        outputText = Calculator.outputText;
+    }
+
+    public static void CalculateAll(int StandardMaterialLength, List<int> rodLengths)
+    {
+        Calculator.outputText = "";
+
+        List<int> deepCopyRodLengths = rodLengths.Select(i => i).ToList();
+
+        Calculator.slotLength = StandardMaterialLength;
+        Calculator.rodLengths = deepCopyRodLengths;
+        Calculator.Calculate(false);
+
+        deepCopyRodLengths = rodLengths.Select(i => i).ToList();
+        Calculator.slotLength = StandardMaterialLength;
+        Calculator.rodLengths = deepCopyRodLengths;
+        Calculator.Calculate(true, false);
+
+        deepCopyRodLengths = rodLengths.Select(i => i).ToList();
+        Calculator.slotLength = StandardMaterialLength;
+        Calculator.rodLengths = deepCopyRodLengths;
+        Calculator.Calculate(true, true);
+    }
+}
