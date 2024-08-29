@@ -5,9 +5,17 @@
 <h3>MainPage</h3>
 
 <button @onclick="OnCounterClicked">@counterText</button>
-
+@* 
 <input @bind="sStandardMaterialLength" placeholder="Standard Material Length" />
-<input @bind="sOrderingLengths" placeholder="Ordering Lengths" />
+<input @bind="sOrderingLengths" placeholder="Ordering Lengths" /> *@
+
+<p>Enter  &#10;1- lengths of materials and &#10;2- the standard material length &#10;and I'll calculate the optimal number of lengths you will need.</p>
+
+<p>Standard material length</p>
+<textarea style="width: 100%;" @bind="sStandardMaterialLength" placeholder="Enter length of SKU material. &#10;For example a standard steel rod length may be 4000mm, so enter 4000. &#10;Omit the units but ensure you use the same units for both the standard material length and the ordering length." />
+
+<p>Ordering lengths</p>
+<textarea style="width: 100%;" @bind="sOrderingLengths" placeholder="Enter lengths separated by a space or a newline. For example &#10;1000 2000  4000 5000 6000 7000 8000 &#10;9000 10000 11540" />
 
 <p>@((MarkupString)outputText)</p>
 
