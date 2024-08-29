@@ -4,7 +4,6 @@
 
 <h3>MainPage</h3>
 
-<button @onclick="OnCounterClicked">@counterText</button>
 @* 
 <input @bind="sStandardMaterialLength" placeholder="Standard Material Length" />
 <input @bind="sOrderingLengths" placeholder="Ordering Lengths" /> *@
@@ -16,6 +15,8 @@
 
 <p>Ordering lengths</p>
 <textarea style="width: 100%;" @bind="sOrderingLengths" placeholder="Enter lengths separated by a space or a newline. For example &#10;1000 2000  4000 5000 6000 7000 8000 &#10;9000 10000 11540" />
+
+<button @onclick="OnCounterClicked">Calculate</button>
 
 <p>@((MarkupString)outputText)</p>
 
