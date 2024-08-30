@@ -13,4 +13,4 @@ Categories of features may include
 - more calculations
 - integrating with your business/workflow
 
-let us know via GitHub issues [here]([url](https://github.com/minascasiou/maloo-web2/issues)
+let us know via GitHub issues [here([url](https://github.com/minascasiou/maloo-web2/issues)]
